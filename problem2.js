@@ -1,20 +1,21 @@
-var s = 'GEEKSFOREGEKS';
-// console.log(s.indexOf(s[0],1));
-for(var i=0; i<s.length;i++){
-  subString(s[i]);
-  }
-
-function subString(c){
-  var start;
-  for(var i=1; i<=s.length;i++){
-    
-    if(c == s[i+1]){
-        start = s.substr(c,i+1)
-        console.log(c+" "+start +" " + s[i+1] +""+ i);
-        
+var s = 'GEEKSFORGEEKS';
+function subString(str){
+  var len = str.length;
+  var temp = new Set();
+  var maxLen = 0;
+  var sub = 0;
+  for(i = 0; i<len;i++){
+    if(temp.has(str.charAt(i))){
+      sub = 1
+      temp.clear();
+      temp.add(str.charAt(i))
+    }else{
+      temp.add(str.charAt(i))
+      sub++;
     }
-   
+    maxLen = Math.max(maxLen,sub);
   }
-  return ''
-  
+  console.log(maxLen)
+  return maxLen
 }
+subString(s);
